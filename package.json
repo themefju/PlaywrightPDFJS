@@ -1,0 +1,17 @@
+{
+  "name": "playwrightpdfjs",
+  "version": "1.0.0",
+  "scripts": {
+    "test-pdf": "npx playwright test pdf.spec.ts"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "pdfjs-dist": "^3.5.141",
+    "playwright": "^1.32.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.32.3",
+    "typescript": "^5.0.4"
+  }
+}
