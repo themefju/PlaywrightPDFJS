@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "module": "esnext",
-    "target": "es2017",
-    "lib": ["es2017", "dom"],
+    "module": "Node16",
+    "target": "ESNext",
+    "lib": ["ESNext", "dom"],
     "types": ["node"],
-    "moduleResolution": "nodenext",
+    "moduleResolution": "node16",
     "strict": true,
     "strictNullChecks": false
   },
