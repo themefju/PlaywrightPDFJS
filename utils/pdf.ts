@@ -11,17 +11,17 @@ export async function readPdf(pathToPdf: string) {
       const page = await pdf.getPage(i);
       const pageContent = await page.getTextContent();
 
-      let text = '';
+      let pageText = '';
       for (const item of pageContent.items) {
         // @ts-ignore
-        const line = item.str;
+        const text = item.str;
         // @ts-ignore
         const isEndOfLine = item.hasEOL;
 
-        isEndOfLine ? (text += `\n${line}`) : (text += line);
+        isEndOfLine ? (pageText += `\n${text}`) : (pageText += text);
       }
 
-      pdfText += text;
+      pdfText += pageText;
     }
 
     pdf.destroy();
