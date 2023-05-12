@@ -15,13 +15,13 @@ export async function readPdf(pathToPdf: string) {
       let pageText = '';
       for (const item of pageContent.items) {
         // @ts-ignore
-        const word = item.str;
+        const str = item.str;
         // @ts-ignore
         const currentMatrix = item.transform[5];
         if (lastMatrix === currentMatrix || !lastMatrix) {
-          pageText += word;
+          pageText += str;
         } else {
-          pageText += `\n${word}`;
+          pageText += `\n${str}`;
         }
         lastMatrix = currentMatrix;
       }
