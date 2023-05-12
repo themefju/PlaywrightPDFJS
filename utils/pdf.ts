@@ -11,22 +11,22 @@ export async function readPdf(pathToPdf: string) {
       const page = await pdf.getPage(i);
       const pageContent = await page.getTextContent();
 
-      let lastY = '';
-      let text = '';
+      let lastMatrix = '';
+      let pageText = '';
       for (const item of pageContent.items) {
         // @ts-ignore
-        const line = item.str;
-        //@ts-ignore
-        const matrix = item.transform[5];
-        if (lastY === matrix || !lastY) {
-          text += line;
+        const str = item.str as string;
+        // @ts-ignore
+        const currentMatrix = String(item.transform[5]);
+        if (lastMatrix === currentMatrix || !lastMatrix) {
+          pageText += str;
         } else {
-          text += `\n${line}`;
+          pageText += `\n${str}`;
         }
-        lastY = matrix;
+        lastMatrix = currentMatrix;
       }
 
-      pdfText += text;
+      pdfText += pageText;
     }
 
     pdf.destroy();
